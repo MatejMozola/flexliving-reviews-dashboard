@@ -28,7 +28,7 @@ export async function fetchHostawayRaw(): Promise<HostawayReview[]> {
         }
       }
     }
-  } catch (e) {
+  } catch {
     // swallow and proceed to mock
   }
 

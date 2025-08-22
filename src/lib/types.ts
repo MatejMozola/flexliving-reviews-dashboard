@@ -17,6 +17,22 @@ export type HostawayReview = {
   channel?: string | null;
 };
 
+export type GoogleReview = {
+  time: number;
+  rating: number;
+  text: string;
+  author_name: string;
+};
+
+export type GooglePlaceResponse = {
+  status: string;
+  result: {
+    name: string;
+    reviews?: GoogleReview[];
+  };
+  error_message?: string;
+};
+
 export type NormalizedReview = {
   id: number;
   type: 'host-to-guest' | 'guest-to-host' | string;

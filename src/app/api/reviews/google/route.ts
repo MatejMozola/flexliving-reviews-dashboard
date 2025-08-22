@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { GoogleReview, GooglePlaceResponse } from '@/lib/types';
 
 export async function GET(req: Request) {
   const url = new URL(req.url);
@@ -15,14 +16,14 @@ export async function GET(req: Request) {
   api.searchParams.set('key', key);
 
   const r = await fetch(api.toString());
-  const j = await r.json();
+  const j: GooglePlaceResponse = await r.json();
 
   if (j.status !== 'OK') {
     return NextResponse.json({ status: 'error', upstream: j.status, message: j.error_message }, { status: 502 });
   }
 
   const name: string = j.result.name;
-  const reviews = (j.result.reviews || []).map((rv: any, idx: number) => ({
+  const reviews = (j.result.reviews || []).map((rv: GoogleReview, idx: number) => ({
     id: rv.time || idx,
     type: 'guest-to-host',
     status: 'published',
