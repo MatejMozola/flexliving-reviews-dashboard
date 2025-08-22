@@ -1,26 +1,28 @@
-@import "tailwindcss";
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+:root{
+  --bg:#0b0d10; --panel:#11151b; --muted:#a5b0c0; --text:#e8eefc; --brand:#42a5f5; --ok:#22c55e; --warn:#f59e0b; --bad:#ef4444;
+  --border:#1f2530;
 }
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-}
+*{box-sizing:border-box}
+html,body{padding:0;margin:0;font-family:ui-sans-serif,system-ui,Segoe UI,Roboto,Helvetica,Arial;color:var(--text);background:var(--bg)}
+a{color:inherit;text-decoration:none}
+.container{max-width:1200px;margin:0 auto;padding:24px}
+.card{background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:16px}
+.grid{display:grid;gap:16px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border:1px solid var(--border);border-radius:10px;background:#0e131a;cursor:pointer}
+.btn.primary{background:var(--brand);border-color:transparent;color:#021a2d;font-weight:600}
+.btn.ghost{background:transparent}
+.input,.select{background:#0e131a;border:1px solid var(--border);border-radius:10px;color:var(--text);padding:8px 10px}
+.table{width:100%;border-collapse:collapse}
+.table th,.table td{padding:10px;border-bottom:1px solid var(--border);text-align:left}
+.badge{padding:2px 8px;border-radius:999px;border:1px solid var(--border);font-size:12px}
+.kpi{display:flex;flex-direction:column;gap:4px;padding:12px;border:1px solid var(--border);border-radius:12px;background:#0e131a}
+.kpi .label{color:var(--muted);font-size:12px}
+.kpi .value{font-size:22px;font-weight:700}
+.filterbar{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:12px}
+.collapsible{margin-top:8px}
+.collapsible summary{cursor:pointer;color:var(--muted)}
+.approved{color:var(--ok)}
+.not-approved{color:var(--bad)}
+.note{color:var(--muted);font-size:14px}
+.hero{height:220px;border-radius:16px;background:linear-gradient(90deg,#0e131a,#101721);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:700;color:#93c5fd}
+.subtitle{color:var(--muted);margin-top:6px}
